@@ -210,7 +210,7 @@ active-low signal.
 
 To keep pi-blaster running in the foreground without running as a daemon use:
 
-    -D
+    --foreground
 
 To view help or version information, use:
 
@@ -258,6 +258,7 @@ about this project on [our blog][blog].
 * Thomas McVay (https://github.com/ThomasMcVay)
 * Pavle Petrovic (https://github.com/pavlecc)
 * arendruni (https://github.com/arendruni)
+* Lucas Servén Marín (https://github.com/squat)
 
 ## Want to support this project?
 

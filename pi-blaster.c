@@ -928,6 +928,7 @@ void parseargs(int argc, char **argv)
   static struct option longopts[] =
   {
     {"help", no_argument, 0, 'h'},
+    {"foreground", no_argument, 0, 'f'},
     {"gpio", required_argument, 0, 'g'},
     {"invert", no_argument, 0, 'i'},
     {"pcm", no_argument, 0, 'p'},
@@ -938,7 +939,7 @@ void parseargs(int argc, char **argv)
   while (1)
   {
     index = 0;
-    c = getopt_long(argc, argv, "Dg:hipv", longopts, &index);
+    c = getopt_long(argc, argv, "Dfg:hipv", longopts, &index);
 
     if (c == -1)
       break;
@@ -952,17 +953,19 @@ void parseargs(int argc, char **argv)
     case 'h':
       fprintf(stderr, "%s version %s\n", argv[0], VERSION);
       fprintf(stderr, "Usage: %s [-hDgipv]\n"
-        "-h (--help)    - this information\n"
-        "-D (--daemon)  - Don't daemonize\n"
-        "-g (--gpio)    - comma separated list of GPIOs to use\n"
-        "                 If omitted, default is \"4,17,18,27,21,22,23,24,25\"\n"
-        "-i (--invert)  - invert pin output (pulse LOW)\n"
-        "-p (--pcm)     - use pcm for dmascheduling\n"
-        "-v (--version) - version information\n"
+        "-h (--help)       - this information\n"
+        "-D                - Don't daemonize (deprecated: use --foreground instead)\n"
+        "-f (--foreground) - run in the foreground\n"
+        "-g (--gpio)       - comma separated list of GPIOs to use\n"
+        "                    If omitted, default is \"4,17,18,27,21,22,23,24,25\"\n"
+        "-i (--invert)     - invert pin output (pulse LOW)\n"
+        "-p (--pcm)        - use pcm for dmascheduling\n"
+        "-v (--version)    - version information\n"
         , argv[0]);
       exit(-1);
 
     case 'D':
+    case 'f':
       daemonize = 0;
       break;
 

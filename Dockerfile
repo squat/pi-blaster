@@ -8,4 +8,4 @@ RUN make
 
 FROM arm32v6/alpine
 COPY --from=builder /pi-blaster/pi-blaster .
-CMD ["./pi-blaster", "-D"]
+CMD ["./pi-blaster", "--foreground"]
